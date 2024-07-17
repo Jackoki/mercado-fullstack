@@ -1,31 +1,34 @@
 package com.supermarket.project.api.model;
 
+import java.util.Date;
 
-import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "Orders")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class User {
-
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToOne
+    private ShoppingCart shoppingCart;
+
+    @OneToOne
+    private User user;
+    
     private String name;
-    private String email;
-    private String username;
-    private String password;
+    private Date date;
+    private Double price;
+
 
 }

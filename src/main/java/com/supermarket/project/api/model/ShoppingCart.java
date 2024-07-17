@@ -1,52 +1,33 @@
-import java.util.HashMap;
-import java.util.Map;
+package com.supermarket.project.api.model;
 
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "ShoppingCart")
+@Getter
+@Setter
 public class ShoppingCart {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer userId;
-    private Map<Integer, Integer> products;
+
+    @OneToOne
+    private User user;
+
+    @OneToMany
+    private List<Product> products;
+    
     private double totalValue;
 
-    public ShoppingCart(){
-        
-    }
-
-    public ShoppingCart(Integer id, Integer userId) {
-        this.id = id;
-        this.userId = userId;
-        this.products = new HashMap<>();
-        this.totalValue = 0.0;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Map<Integer, Integer> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Map<Integer, Integer> products) {
-        this.products = products;
-    }
-
-    public double getTotalValue() {
-        return totalValue;
-    }
-
-    public void setTotalValue(double totalValue) {
-        this.totalValue = totalValue;
-    }
 }

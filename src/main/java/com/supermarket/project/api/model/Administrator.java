@@ -8,12 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Customer")
+@Table(name = "Administrator")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer extends User {
-    private Double wallet;
-
+public class Administrator extends User {
+    private Integer permissionLevel;
 }

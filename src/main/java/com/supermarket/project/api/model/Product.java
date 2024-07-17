@@ -1,59 +1,29 @@
+package com.supermarket.project.api.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "Product")
+@Getter
+@Setter
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToOne
+    private Category category;
+
     private String name;
-    private Decimal price;
+    private Double price;
     private Integer stock;
-    private Integer idCategory;
+    private Boolean available;
 
-    public Product(){
-        
-    }
-
-    public Product(Integer id, String name, Decimal price, Integer stock, Integer idCategory) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-        this.idCategory = idCategory;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Decimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(Decimal price) {
-        this.price = price;
-    }
-
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
-    public Integer getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(Integer idCategory) {
-        this.idCategory = idCategory;
-    }
 }
